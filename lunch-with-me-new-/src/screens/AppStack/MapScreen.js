@@ -11,6 +11,7 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native';
+import { connect } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import MapView from 'react-native-maps';
 import { KEY } from '../../constants/misc';
@@ -146,4 +147,8 @@ const styles = StyleSheet.create({
 
 });
 
-export default MapScreen;
+const mapStateToProps = state => {
+    // time: state.ggd.time
+}
+
+export default connect(mapStateToProps,null)(MapScreen);

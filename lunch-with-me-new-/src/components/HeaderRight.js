@@ -29,7 +29,7 @@ class HeaderRight extends Component {
     }
 
     onMapPress() {
-        NavigationService.navigate('MapScreen');
+        NavigationService.navigate('TimePickerScreen');
     }
 
     onChatPress() {

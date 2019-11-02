@@ -495,10 +495,10 @@ router.get('/request/:id/:username',  passport.authenticate('jwt', { session: fa
 });
 
 // user list
-router.get('/',  passport.authenticate('jwt', { session: false }), (req, res, next) => {
-  User.find({_id: req.user.id})
+router.get('/userList',  passport.authenticate('jwt', { session: false }), (req, res, next) => {
+  User.find({_id:{$ne:req.user.id}})
     .then(users => {
-      users[0].password = ''
+      //users[0].password = ''
       //console.log('a00');
       let response = {
         success: true,
@@ -571,7 +571,7 @@ router.get('/active/:email', function(req, res) {
 });
 
 //sample get all users code
-router.get('/userList',  passport.authenticate('jwt', { session: false }), (req, res, next) => {
+/* router.get('/userList',  passport.authenticate('jwt', { session: false }), (req, res, next) => {
   User.find({_id:{$ne:req.user.id} })
     .then(users => {
       //users[0].password = ''
@@ -586,7 +586,7 @@ router.get('/userList',  passport.authenticate('jwt', { session: false }), (req,
       log.err('mongo', 'failed to get users', err.message || err);
       return next(new Error('Failed to get users'));
     });
-});
+}); */
 
 
 module.exports = router;
